@@ -13,4 +13,8 @@ protected $fillable = ['name', 'image'];
     {
         return $this->hasMany(Project::class);
     }
+    public function profiles()
+    {
+        return $this->hasMany(Profile::class);
+    }
 }

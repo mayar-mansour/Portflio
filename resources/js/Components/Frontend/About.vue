@@ -1,3 +1,10 @@
+<script setup>
+import { Head, Link } from '@inertiajs/vue3';
+defineProps({
+  profiles: Object,
+  test: Object,
+});
+</script>
 <template>
   <section id="about" class="section bg-light-secondary dark:bg-dark-secondary">
     <div
@@ -11,6 +18,7 @@
         opacity: 1,
         y: 0,
       }"
+    v-for="profile in profiles.data" :key="profile.id"
     >
       <div class="flex flex-col xl:flex-row gap-24">
         <img
@@ -30,20 +38,15 @@
             <h2 class="text-3xl lg:text-4xl font-medium lg:font-extrabold mb-3">
               About Me
             </h2>
-            <P class="mb-4 text-accent">Freelance frontend Web developer</P>
+            <P class="mb-4 text-accent">{{ profile.about_title }}</P>
             <hr class="mb-8 opacity-90 dark:opacity-5" />
             <p class="mb-8">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit tempore
-              earum dolorum quo consequatur rem nihil hic ducimus rerum soluta
-              neque harum velit molestiae dignissimos distinctio dolorum nisi
-              labore culpa nihil. <br />
-              <br />
-              Qui doloremque quod sit accusantium unde totam inventore
-              cupiditate ratione esse maxime eum recusandae ducimus.
+            {{ profile.about_desc }}
             </p>
           </div>
-          <a href="#contact" class="btn btn-md bg-accent text-light-tail-100">
-            Contact me
+          <a :href="profile.contact_mail" class="btn btn-md bg-accent text-light-tail-100">
+
+ Contact me
           </a>
         </div>
       </div>

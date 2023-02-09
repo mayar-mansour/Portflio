@@ -1,11 +1,11 @@
 <template>
-    <Head title="Skills Index" />
+    <Head title="profiles Index" />
     <AuthenticatedLayout>
         <template #header>
             <h2
                 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
             >
-                Skills
+                profiles
             </h2>
         </template>
 
@@ -17,14 +17,74 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="flex justify-end m-2 p-2">
                             <Link
-                                :href="route('skills.create')"
+                                :href="route('portflio.create')"
                                 class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded-md"
                             >
-                                New Skill
+                                New portflio Profile
                             </Link>
                         </div>
-    <div class="overflow-x-auto relative">
-       
+   <div class="overflow-x-auto relative">
+          <table
+            class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="
+                text-xs text-gray-700
+                uppercase
+                bg-gray-50
+                dark:bg-gray-700 dark:text-gray-400
+              "
+            >
+              <tr>
+                <th scope="col" class="py-3 px-6">ID</th>
+                <th scope="col" class="py-3 px-6">Name</th>
+                <th scope="col" class="py-3 px-6">Skill</th>
+                <th scope="col" class="py-3 px-6">Image</th>
+                <th scope="col" class="py-3 px-6"></th>
+              </tr>
+            </thead>
+             <tbody>
+              <tr
+                v-for="profile in profiles.data"
+                :key="profile.id"
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <th
+                  scope="row"
+                  class="
+                    py-4
+                    px-6
+                    font-medium
+                    text-gray-900
+                    whitespace-nowrap
+                    dark:text-white
+                  "
+                >
+
+                </th>
+                <td class="py-4 px-6">{{ profile.name }}</td>
+                <td class="py-4 px-6">{{ profile.name }}</td>
+                <td class="py-4 px-6">
+                  <!-- <img :src="project.image" class="w-12 h-12 rounded-full" /> -->
+                </td>
+                <td class="py-4 px-6">
+                  <Link
+                    :href="route('projects.edit', profile.id)"
+                    class="font-medium text-blue-500 hover:text-blue-700 mr-2"
+                    >Edit</Link
+                  >
+                  <Link
+                    :href="route('projects.destroy', profile.id)"
+                    method="delete"
+                    as="button"
+                    type="button"
+                    class="font-medium text-red-500 hover:text-red-700 mr-2"
+                    >Delete</Link
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
                     </div>
                 </div>
@@ -34,9 +94,9 @@
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link } from "@inertiajs/vue3";
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head,Link } from '@inertiajs/vue3';
 defineProps({
-  skills: Array,
+  profiles: Array,
 });
 </script>

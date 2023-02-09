@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profile', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->string('logo')->nullable();
@@ -22,8 +22,7 @@ return new class extends Migration
             $table->string('job_title_desc')->nullable();
             $table->string('youtube_link')->nullable();
             $table->string('linkedin_link')->nullable();
-            $table->string('linkedin_link')->nullable();
-            $table->string('linkedin_link')->nullable();
+            $table->string('udemy_link')->nullable();
             $table->string('about_title')->nullable();
             $table->string('about_desc')->nullable();
             $table->string('skill_id')->nullable();
@@ -43,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile');
+        Schema::dropIfExists('profiles');
     }
 };

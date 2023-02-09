@@ -18,6 +18,8 @@ const toggleDark = useToggle(isDark);
 defineProps({
   skills: Object,
   projects: Object,
+  profiles: Object,
+  test: Object,
 });
 </script>
 
@@ -26,11 +28,11 @@ defineProps({
 
  <FrontendLayout>
     <!-- Hero primary -->
-    <Hero />
+    <Hero :profiles="profiles"/>
     <!-- Promote tail-100 -->
-    <Promote />
+    <Promote :profiles="profiles"/>
     <!-- About secondary -->
-    <About />
+    <About :profiles="profiles"/>
     <!-- Skills tail-100 -->
     <Skills :skills="skills" />
     <!-- Portfolio primary -->

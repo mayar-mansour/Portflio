@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Profile extends Model
 {
-    protected $fillable = ['skill_id', 'name', 'image', 'project_url'];
+    use HasFactory;
+    protected $fillable = ['name', 'logo'];
+
 
     public function skill()
     {
         return $this->belongsTo(Skill::class);
     }
-    public function profiles()
+    public function profile()
     {
-        return $this->hasMany(Profile::class);
+        return $this->belongsTo(Profile::class);
     }
 }
-

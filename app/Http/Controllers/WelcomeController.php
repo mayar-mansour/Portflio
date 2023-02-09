@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PortflioResource;
 use App\Http\Resources\ProjectResource;
 use App\Http\Resources\SkillResource;
+use App\Models\Profile;
 use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Http\Request;
@@ -15,7 +17,11 @@ class WelcomeController extends Controller
     {
         $skills = SkillResource::collection(Skill::all());
         $projects = ProjectResource::collection(Project::with('skill')->get());
+        $profiles= PortflioResource::collection(Profile::all());
+        $test=$profiles[0]->name;
+        
 
-        return Inertia::render('Welcome', compact('skills', 'projects'));
+
+        return Inertia::render('Welcome', compact('skills', 'projects','profiles','test'));
     }
 }

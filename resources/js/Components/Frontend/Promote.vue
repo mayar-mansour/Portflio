@@ -1,3 +1,10 @@
+<script setup>
+import { Head, Link } from '@inertiajs/vue3';
+defineProps({
+  profiles: Object,
+  test: Object,
+});
+</script>
 <template>
   <div class="bg-light-tail-100 dark:bg-dark-navy-500">
     <div
@@ -9,6 +16,7 @@
         sm:px-6
         lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8
       "
+      v-for="profile in profiles.data" :key="profile.id"
     >
       <h4
         class="
@@ -28,7 +36,7 @@
       <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
         <div class="inline-flex rounded-md shadow">
           <a
-            href="https://www.udemy.com/course/laravel-9-admin-panel-learn-roles-and-permissions/"
+            :href="profile.youtube_link"
             class="
               inline-flex
               items-center
