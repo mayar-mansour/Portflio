@@ -6,6 +6,7 @@ use App\Http\Resources\PortflioResource;
 use App\Models\Profile;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -18,7 +19,7 @@ class PortflioController extends Controller
         // dd($profiles[0]->name);
         return Inertia::render('Portflio/index',compact('profiles'));
     }
-     /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -37,33 +38,31 @@ class PortflioController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>['required','min:3'],
-            'skill_id'=>['required','skill_id'],
-        ]);
 
-        if ($request->hasFile('logo')) {
-            $logo = $request->file('logo')->store('profiles');
+        // if ($request->hasFile('logo')) {
+        //     $logo = $request->file('logo')->store('profiles');
             Profile::create([
+                'user_id' => Auth::guard('web')->id(),
                 'name' => $request->name,
-                'logo' => $request->$logo,
-                'company_name' => $request->$company_name,
-                'job_title' => $request->$job_title,
-                'job_title_desc' => $request->$job_title_desc,
-                'youtube_link' => $request->$youtube_link,
-                'linkedin_link' => $request->$linkedin_link,
-                'udemy_link' => $request->$udemy_link,
-                'about_title' => $request->$about_title,
-                'about_desc' => $request->$about_desc,
-                'services_title' => $request->$services_title,
-                'services_desc' => $request->$services_desc,
-                'contact_country' => $request->$contact_country,
-                'contact_mail' => $request->$contact_mail,
-                'skill_id' => $request->$skill_id,
-                'project_id' => $request->$project_id,
+                // 'logo' => $logo,
+                // 'company_name' => $request->company_name,
+                // 'job_title' => $request->job_title,
+                // 'job_title_desc' => $request->job_title_desc,
+                // 'youtube_link' => $request->youtube_link,
+                // 'linkedin_link' => $request->linkedin_link,
+                // 'udemy_link' => $request->udemy_link,
+                // 'about_title' => $request->about_title,
+                // 'about_desc' => $request->about_desc,
+                // 'services_title' => $request->services_title,
+                // 'services_desc' => $request->services_desc,
+                // 'contact_country' => $request->contact_country,
+                // 'contact_mail' => $request->contact_mail,
+                // 'skill_id' => $request->skill_id,
+                // 'project_id' => $request->project_id,
             ]);
 
-            return Redirect::route('skills.index')->with('message', 'Skill created successfully.');
+
+            return Redirect::route('portflio.index')->with('message', 'Skill created successfully.');
         }
     }
-}
+// }

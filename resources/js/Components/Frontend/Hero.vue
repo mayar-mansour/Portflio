@@ -31,9 +31,11 @@ defineProps({
         y: 0,
       }"
           >
+
       <div class="flex flex-col md:flex-row items-center h-full pt-8 mt-8"
       v-for="profile in profiles.data" :key="profile.id">
-        <div class="flex-1 flex flex-col items-center lg:items-start">
+
+        <div  class="flex-1 flex flex-col items-center lg:items-start">
           <p class="text-lg text-accent text-md mb-[22px]">Hey, I'm Eng.{{ profile.name }}! 👋</p>
           <h4
             class="
@@ -45,7 +47,7 @@ defineProps({
               md:tracking-[-2px]
             "
           >
-           {{ profile.job_title }}
+          {{ profile.job_title }}
           </h4>
           <p
             class="

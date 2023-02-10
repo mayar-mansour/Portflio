@@ -9,6 +9,7 @@ use App\Models\Profile;
 use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class WelcomeController extends Controller
@@ -18,8 +19,12 @@ class WelcomeController extends Controller
         $skills = SkillResource::collection(Skill::all());
         $projects = ProjectResource::collection(Project::with('skill')->get());
         $profiles= PortflioResource::collection(Profile::all());
+        if(Auth::guard('web')->id == $profiles->id ){
+        $profiles= PortflioResource::collection(Profile::all());
         $test=$profiles[0]->name;
-        
+        }
+        dd(Auth::guard('web')->id());
+
 
 
         return Inertia::render('Welcome', compact('skills', 'projects','profiles','test'));

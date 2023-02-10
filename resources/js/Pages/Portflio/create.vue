@@ -265,12 +265,11 @@ defineProps({
 });
 const form = useForm({
     name: "",
-    project_url: "",
-    image: null,
+user_id:"",
     skill_id: "",
 });
 
 const submit = () => {
-    form.post(route('projects.store'));
+    form.post(route('portflio.store'));
 };
 </script>
