@@ -19,7 +19,7 @@ defineProps({
   skills: Object,
   projects: Object,
   profiles: Object,
-  test: Object,
+  auth: Object,
 });
 </script>
 
@@ -28,7 +28,7 @@ defineProps({
 
  <FrontendLayout>
     <!-- Hero primary -->
-    <Hero :profiles="profiles"/>
+    <Hero :profiles="profiles" :auth="auth"/>
     <!-- Promote tail-100 -->
     <Promote :profiles="profiles"/>
     <!-- About secondary -->

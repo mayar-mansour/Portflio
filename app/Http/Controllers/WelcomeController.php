@@ -19,14 +19,14 @@ class WelcomeController extends Controller
         $skills = SkillResource::collection(Skill::all());
         $projects = ProjectResource::collection(Project::with('skill')->get());
         $profiles= PortflioResource::collection(Profile::all());
-        if(Auth::guard('web')->id == $profiles->id ){
-        $profiles= PortflioResource::collection(Profile::all());
-        $test=$profiles[0]->name;
-        }
-        dd(Auth::guard('web')->id());
+          $auth=Auth::guard('web')->id();
+        $profiles= PortflioResource::collection(Profile::all()->where('user_id',$auth));
+        // $test=$profiles[0]->name;
+
+        // dd(Auth::guard('web')->id());
 
 
 
-        return Inertia::render('Welcome', compact('skills', 'projects','profiles','test'));
+        return Inertia::render('Welcome', compact('skills', 'projects','profiles','auth'));
     }
 }
