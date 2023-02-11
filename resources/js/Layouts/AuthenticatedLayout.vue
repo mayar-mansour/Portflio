@@ -44,6 +44,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('projects.index')" :active="route().current('projects.index')">
                                     Projects
                                 </NavLink>
+                                <NavLink :href="route('welcome')" :active="route().current('welcome')">
+                                    Home Screen
+                                </NavLink>
                             </div>
                         </div>
 

@@ -265,8 +265,20 @@ defineProps({
 });
 const form = useForm({
     name: "",
-user_id:"",
+    user_id:"",
     skill_id: "",
+    company_name: "",
+    job_title: "",
+    job_title_desc: "",
+    youtube_link: "",
+    udemy_link: "",
+    linkedin_link: "",
+    about_title: "",
+    about_desc: "",
+    service_title: "",
+    contact_company: "",
+    contact_mail: "",
+    logo:null,
 });
 
 const submit = () => {

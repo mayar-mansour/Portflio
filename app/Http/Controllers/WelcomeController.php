@@ -19,7 +19,7 @@ class WelcomeController extends Controller
         $skills = SkillResource::collection(Skill::all());
         $projects = ProjectResource::collection(Project::with('skill')->get());
         $profiles= PortflioResource::collection(Profile::all());
-          $auth=Auth::guard('web')->id();
+        $auth=Auth::guard('web')->id();
         $profiles= PortflioResource::collection(Profile::all()->where('user_id',$auth));
         // $test=$profiles[0]->name;
 

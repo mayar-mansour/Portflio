@@ -9,6 +9,7 @@ const navigations = [
   { name: "Portfolio", href: "#portfolio" },
   { name: "Services", href: "#services" },
   { name: "Contact", href: "#contact" },
+  { name: "Dashboard", href: route('dashboard') },
 ];
 const setScrollBg = (value) => {
   scrollBg.value = value;
