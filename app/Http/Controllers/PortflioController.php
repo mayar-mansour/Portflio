@@ -46,7 +46,6 @@ class PortflioController extends Controller
      */
     public function store(Request $request)
     {
-
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo')->store('profiles');
             Profile::create([
@@ -70,6 +69,16 @@ class PortflioController extends Controller
             return Redirect::route('portflio.index')->with('message', 'Skill created successfully.');
         }
     }
+   /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($profile)
+    {
+        return Inertia::render('Portflio/edit',compact('profile'));
+    }
 
         /**
      * Update the specified resource in storage.
@@ -90,10 +99,10 @@ class PortflioController extends Controller
             $image = $request->file('logo')->store('profiles');
         }
 
-        $project->update([
+        $profile->update([
             'user_id' => Auth::guard('web')->id(),
                 'name' => $request->name,
-                'logo' => $logo,
+                'logo' => $image,
                 'company_name' => $request->company_name,
                 'job_title' => $request->job_title,
                 'job_title_desc' => $request->job_title_desc,
@@ -106,10 +115,10 @@ class PortflioController extends Controller
                 'contact_country' => $request->contact_country,
                 'contact_mail' => $request->contact_mail,
                 'contact_phone' => $request->contact_phone,
-                'logo' => $image
         ]);
         return Redirect::route('profiles.index')->with('message', 'Project updated successfully.');
     }
+
     public function destroy(Profile $profile)
     {
         Storage::delete($profile->logo);

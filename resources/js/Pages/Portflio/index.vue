@@ -36,10 +36,10 @@
               "
             >
               <tr>
-                <th scope="col" class="py-3 px-6">ID</th>
+                <th scope="col" class="py-3 px-6"></th>
                 <th scope="col" class="py-3 px-6">Name</th>
                 <th scope="col" class="py-3 px-6">Image</th>
-                <th scope="col" class="py-3 px-6"></th>
+                <th scope="col" class="py-3 px-6">Action</th>
               </tr>
             </thead>
              <tbody>
@@ -59,21 +59,20 @@
                     dark:text-white
                   "
                 >
-
                 </th>
                 <td class="py-4 px-6">{{ profile.name }}</td>
-                <td class="py-4 px-6">{{ profile.logo }}</td>
+
                 <td class="py-4 px-6">
-                  <!-- <img :src="project.image" class="w-12 h-12 rounded-full" /> -->
+                  <img :src="profile.logo" class="w-12 h-12 rounded-full" />
                 </td>
                 <td class="py-4 px-6">
                   <Link
-                    :href="route('profile.edit', profile.id)"
+                    :href="route('portflio.edit', profile.id)"
                     class="font-medium text-blue-500 hover:text-blue-700 mr-2"
                     >Edit</Link
                   >
                   <Link
-                    :href="route('profile.destroy', profile.id)"
+                    :href="route('portflio.destroy', profile.id)"
                     method="delete"
                     as="button"
                     type="button"
