@@ -17,58 +17,6 @@
           <div class="p-6 text-gray-900 dark:text-gray-100">
             <form class="p-4 row flex " @submit.prevent="submit">
           <div class="col max-w-md mx-auto sm:px-6 lg-px-8 ">
-            <div>
-            <InputLabel for="skill_id" value="Skill" />
-           <select
-              v-model="form.skill_id"
-              id="skill_id"
-              name="skill_id"
-              class="
-                mt-1
-                block
-                w-full
-                pl-3
-                pr-10
-                py-2
-                text-base
-                border-gray-300
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
-                sm:text-sm
-                rounded-md
-                dark:bg-gray-900
-              "
-            >
-              <option v-for="skill in skills" :key="skill.id" :value="skill.id">
-                {{ skill.name }}
-              </option>
-            </select>
-            </div>
-                     <div>
-            <InputLabel for="skill_id" value="Skill" />
-           <select
-              v-model="form.skill_id"
-              id="skill_id"
-              name="skill_id"
-              class="
-                mt-1
-                block
-                w-full
-                pl-3
-                pr-10
-                py-2
-                text-base
-                border-gray-300
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
-                sm:text-sm
-                rounded-md
-                dark:bg-gray-900
-              "
-            >
-              <option v-for="skill in skills" :key="skill.id" :value="skill.id">
-                {{ skill.name }}
-              </option>
-            </select>
-            </div>
               <div>
                 <InputLabel for="name" value="Name" />
 
@@ -133,7 +81,7 @@
                 <InputError class="mt-2" :message="form.errors.job_title_desc" />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="youtube_link" value="youtube_link" />
+                <InputLabel for="youtube_link" value="Youtube Channel Link" />
 
                 <TextInput
                   id="youtube_link"
@@ -152,7 +100,7 @@
         <div class="col max-w-md mx-auto sm:px-6 lg-px-8 ">
 
               <div>
-                <InputLabel for="udemy_link" value="udemy_link" />
+                <InputLabel for="udemy_link" value="If you have Udemy Course / Insert The course Name" />
 
                 <TextInput
                   id="udemy_link"
@@ -162,7 +110,17 @@
                 />
               </div>
               <div>
-                <InputLabel for="linkedin_link" value="linkedin_link" />
+                <InputLabel for="udemy_link" value=" Udemy Course Link" />
+
+                <TextInput
+                  id="udemy_link"
+                  type="text"
+                  class="mt-1 block w-full"
+                  v-model="form.udemy_link"
+                />
+              </div>
+              <div>
+                <InputLabel for="linkedin_link" value="Linkedin Link" />
 
                 <TextInput
                   id="linkedin_link"
@@ -174,7 +132,7 @@
                 <InputError class="mt-2" :message="form.errors.linkedin_link" />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="about_title" value="about_title" />
+                <InputLabel for="about_title" value="About you" />
 
                 <TextInput
                   id="about_title"
@@ -185,7 +143,7 @@
                 />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="about_desc" value="about_desc" />
+                <InputLabel for="about_desc" value="Description" />
 
                 <TextInput
                   id="about_desc"
@@ -195,20 +153,9 @@
 
                 />
               </div>
-              <div class="mt-2 ">
-                <InputLabel for="services_title" value="services_title" />
 
-                <TextInput
-                  id="services_title"
-                  type="text"
-                  class="mt-1 block w-full "
-                   v-model="form.services_title"
-
-                />
-                <InputError class="mt-2" :message="form.errors.services_title" />
-              </div>
               <div class="mt-2 ">
-                <InputLabel for="contact_country" value="contact_country" />
+                <InputLabel for="contact_country" value="Country" />
 
                 <TextInput
                   id="contact_country"
@@ -220,7 +167,19 @@
                 <InputError class="mt-2" :message="form.errors.contact_country" />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="contact_mail" value="contact_mail" />
+                <InputLabel for="contact_mail" value="Your Email" />
+
+                <TextInput
+                  id="contact_mail"
+                  type="text"
+                  class="mt-1 block w-full "
+                  v-model="form.contact_mail"
+                />
+
+                <InputError class="mt-2" :message="form.errors.contact_mail" />
+              </div>
+              <div class="mt-2 ">
+                <InputLabel for="contact_mail" value="Your phone" />
 
                 <TextInput
                   id="contact_mail"
@@ -232,8 +191,6 @@
                 <InputError class="mt-2" :message="form.errors.contact_mail" />
               </div>
   <div class="flex items-center justify-end mt-4">
-
-
                 <PrimaryButton
                   class="ml-4 bg-indigo-500"
                   :class="{ 'opacity-25': form.processing }"
@@ -261,23 +218,23 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 defineProps({
-  skills: Array,
+
 });
 const form = useForm({
     name: "",
     user_id:"",
-    skill_id: "",
     company_name: "",
     job_title: "",
     job_title_desc: "",
     youtube_link: "",
+    course_name: "",
     udemy_link: "",
     linkedin_link: "",
     about_title: "",
     about_desc: "",
-    service_title: "",
     contact_company: "",
     contact_mail: "",
+    contact_phone: "",
     logo:null,
 });
 

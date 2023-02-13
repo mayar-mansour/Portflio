@@ -19,6 +19,7 @@ defineProps({
   skills: Object,
   projects: Object,
   profiles: Object,
+  services: Object,
   auth: Object,
 });
 </script>
@@ -38,9 +39,9 @@ defineProps({
     <!-- Portfolio primary -->
     <Portfolio :skills="skills" :projects="projects" />
     <!-- Services secondary -->
-    <Services />
+    <Services :services="services"/>
     <!-- Contact primary -->
-    <ContactMe />
+    <ContactMe :profiles="profiles"/>
     <div class="p-6">
         <button @click="toggleDark()" class="px-4 py-2 text-white bg-gray-600 dark:bg-purple-700">Dark Mode</button>
                     </div>

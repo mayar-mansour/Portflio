@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/contact', ContactController::class)->name('contact');
     Route::resource('/skills', SkillController::class);
     Route::resource('/projects', ProjectController::class);
+    Route::resource('/services', ServiceController::class);
     Route::resource('/portflio', PortflioController::class);
 
 });

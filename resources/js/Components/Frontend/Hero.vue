@@ -62,18 +62,6 @@ defineProps({
           >
            {{ profile.job_title_desc }}
           </p>
-          <button
-            class="
-              btn btn-md
-              bg-accent
-              hover:bg-light-secondary hover:text-light-tail-500
-              dark:hover:bg-dark-secondary dark:hover:text-dark-navy-100
-              md:btn-lg
-              transition-all
-            "
-          >
-            Work with me
-          </button>
           <div class="pt-12">
             <h5
               class="
@@ -154,7 +142,7 @@ defineProps({
         <div class="flex flex-1 justify-end items-center h-full mt-8 md:mt-0">
           <img
             class="rounded-lg"
-            src="https://media.licdn.com/dms/image/D4D35AQEuBMfuZNSDlQ/profile-framedphoto-shrink_400_400/0/1674907170743?e=1676314800&v=beta&t=6LBXb3-kZZzunlIUoPos2RdTwlI_07saTHG3JeZiX28"
+            :src="profile.logo"
             alt="Hero"
           />
         </div>

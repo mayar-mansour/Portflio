@@ -23,7 +23,7 @@ defineProps({
       <div class="flex flex-col xl:flex-row gap-24">
         <img
           class="object-cover h-full w-[566px] md:mx-auto lg:mx-0 rounded-2xl"
-          src="http://portfolio.test/img/about.jpeg"
+          :src="profile.logo"
           alt="about"
         />
         <div
@@ -44,10 +44,12 @@ defineProps({
             {{ profile.about_desc }}
             </p>
           </div>
-          <a :href="profile.contact_mail" class="btn btn-md bg-accent text-light-tail-100">
-
- Contact me
-          </a>
+          <h2 class="btn btn-md bg-accent text-light-tail-100">
+ Contact me :
+          </h2>
+<span>{{profile.contact_mail}}</span>
+ <br>
+ <span>{{profile.contact_mail}}</span>
         </div>
       </div>
     </div>

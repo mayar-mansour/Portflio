@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Skill extends Model
+class Service extends Model
 {
-protected $fillable = ['name', 'image'];
+protected $fillable = ['name', 'desc'];
 public function save(array $options = array())
     {
         if(Auth::guard('web')->check()){
@@ -19,11 +19,6 @@ public function save(array $options = array())
 
         parent::save($options);
     }}
-
-    public function projects()
-    {
-        return $this->hasMany(Project::class);
-    }
     public function profiles()
     {
         return $this->hasMany(Profile::class);

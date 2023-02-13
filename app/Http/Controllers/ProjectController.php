@@ -20,7 +20,8 @@ class ProjectController extends Controller
     public function index()
 
     {
-        $projects = ProjectResource::collection(Project::with('skill')->get());
+        $auth=Auth::guard('web')->id();
+        $projects = ProjectResource::collection(Project::with('skill')->get()->where('profile_id',$auth));
         return Inertia::render('Projects/index', compact('projects'));
     }
 

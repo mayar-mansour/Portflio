@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\SkillResource;
-use App\Models\Skill;
+use App\Http\Resources\ServiceResource;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
-use Inertia\Inertia;
-use Symfony\Contracts\Service\Attribute\Required;
 
-class SkillController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class SkillController extends Controller
     public function index()
 
     {
-         $auth=Auth::guard('web')->id();
-        $skills= SkillResource::collection(Skill::all()->where('profile_id',$auth));
-        return Inertia::render('Skills/index',compact('skills'));
+        $auth=Auth::guard('web')->id();
+        $services= ServiceResource::collection(Service::all()->where('profile_id',$auth));
+        return Inertia::render('Services/index',compact('services'));
     }
 
     /**
@@ -33,7 +33,7 @@ class SkillController extends Controller
     public function create()
     {
 
-        return Inertia::render('Skills/create');
+        return Inertia::render('Services/create');
     }
 
     /**
@@ -45,21 +45,17 @@ class SkillController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image'=>['required','image'],
             'name'=>['required','min:3'],
         ]);
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('skills');
-            Skill::create([
+            Service::create([
                 'name' => $request->name,
-                'image' => $image
+                'desc' =>  $request->desc
             ]);
 
-            return Redirect::route('skills.index')->with('message', 'Skill created successfully.');
+            return Redirect::route('services.index')->with('message', 'Service created successfully.');
         }
-        return Redirect::back();
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -67,9 +63,9 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Skill $skill)
+    public function edit($service)
     {
-        return Inertia::render('Skills/edit',compact('skill'));
+        return Inertia::render('Services/edit',compact('service'));
     }
 
     /**
@@ -79,21 +75,17 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Skill $skill)
+    public function update(Request $request,Service $service)
     {
-        $image = $skill->image;
         $request->validate([
             'name'=>['required','min:3'],
         ]);
-        if ($request->hasFile('image')) {
-    Storage::delete($skill->image);
-    $image = $request->file('image')->store('skills');
-    }
-    $skill->update([
+
+    $service->update([
         'name'=>$request->name,
-        'image'=>$image,
+        'desc'=>$request->desc,
     ]);
-    return Redirect::route('skills.index')->with('message', 'Skill updated successfully.');
+    return Redirect::route('services.index')->with('message', 'service updated successfully.');
 }
 
     /**
@@ -102,10 +94,9 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skill $skill)
+    public function destroy(Service $service)
     {
-        Storage::delete($skill->image);
-        $skill->delete();
-        return Redirect::back()->with('message', 'Skill deleted successfully.');
+        $service->delete();
+        return Redirect::back()->with('message', 'service deleted successfully.');
     }
 }

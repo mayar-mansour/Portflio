@@ -24,16 +24,14 @@ return new class extends Migration
             $table->string('job_title')->nullable();
             $table->string('job_title_desc')->nullable();
             $table->string('youtube_link')->nullable();
+            $table->string('course_name')->nullable();
             $table->string('linkedin_link')->nullable();
             $table->string('udemy_link')->nullable();
             $table->string('about_title')->nullable();
             $table->string('about_desc')->nullable();
-            $table->string('skill_id')->nullable();
-            $table->string('project_id')->nullable();
-            $table->string('services_title')->nullable();
-            $table->string('services_desc')->nullable();
             $table->string('contact_country')->nullable();
             $table->string('contact_mail')->nullable();
+            $table->string('contact_phone')->nullable();
             $table->timestamps();
         });
     }
