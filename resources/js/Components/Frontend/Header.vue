@@ -2,7 +2,11 @@
 import { ref, onMounted } from "vue";
 const showMobileMenu = ref("false");
 const scrollBg = ref(false);
+import { useDark, useToggle } from "@vueuse/core";
 
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 const navigations = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
@@ -25,26 +29,22 @@ onMounted(() => {
   <nav
     class="w-full fixed z-20 border-gray-200 px-2 sm:px-4 py-2.5 rounded"
     :class="{
-      'bg-light-primary dark:bg-dark-primary': scrollBg,
-      'bg-white dark:bg-slate-800': !scrollBg,
+      'bg-brown dark:bg-dark-primary': scrollBg,
+      'bg-transperent dark:bg-slate-800': !scrollBg,
     }"
   >
     <div
       class="container flex flex-wrap justify-between items-center mx-auto"
       bis_skin_checked="1"
     >
-      <a href="https://laraveller.com/" class="flex items-center">
-        <img
-          src="https://yt3.ggpht.com/s11ZP43s9h1L4G_wazGY5wnGQBkKJlJdVmw4JXX8Q_yADLxX8k50FtlbbnmZG1p-iFKdC3e36A=s176-c-k-c0x00ffffff-no-rj-mo"
-          class="mr-3 h-6 sm:h-9"
-          alt="protflio Logo"
-        />
+      <a href="" class="flex items-center">
         <span
           class="
             self-center
             text-xl
             font-semibold
             whitespace-nowrap
+            text-black
             dark:text-white
           "
           >Mayar Mansour</span
@@ -119,6 +119,11 @@ onMounted(() => {
               >{{ navigation.name }}</a
             >
           </li>
+
+        <svg @click="toggleDark()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="IconChangeColor" height="35" width="48">
+        <path d="M9.5,2c-1.82,0-3.53,0.5-5,1.35c2.99,1.73,5,4.95,5,8.65s-2.01,6.92-5,8.65C5.97,21.5,7.68,22,9.5,22c5.52,0,10-4.48,10-10 S15.02,2,9.5,2z"
+         id="mainIconPathAttribute" fill="#000000" stroke-width="0.6" stroke="#002aff" filter="url(#shadow)"></path><filter id="shadow"><feDropShadow id="shadowValue"
+          stdDeviation="0.5" dx="1.1" dy="1.2" flood-color="black"></feDropShadow></filter></svg>
         </ul>
       </div>
     </div>

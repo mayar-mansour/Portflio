@@ -75,7 +75,7 @@ class PortflioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($profile)
+    public function edit(Profile $profile)
     {
         return Inertia::render('Portflio/edit',compact('profile'));
     }
@@ -100,7 +100,7 @@ class PortflioController extends Controller
         }
 
         $profile->update([
-            'user_id' => Auth::guard('web')->id(),
+                'user_id' => Auth::guard('web')->id(),
                 'name' => $request->name,
                 'logo' => $image,
                 'company_name' => $request->company_name,

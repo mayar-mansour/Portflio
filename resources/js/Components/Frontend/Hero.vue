@@ -14,7 +14,7 @@ defineProps({
       flex
       items-center
       bg-light-primary
-      dark:bg-dark-primary
+      dark:bg-dark-navy-500
       py-32
       lg:py-0
       overflow-hidden

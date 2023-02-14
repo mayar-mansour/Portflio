@@ -27,8 +27,8 @@ defineProps({
 
         </p>
       </div>
-      <div v-for="service in services.data" :key="service.id" class="grid lg:grid-cols-4 gap-8">
-        <div class="bg-light-tail-100 dark:bg-dark-navy-500 p-6 rounded-2xl">
+      <div class="grid lg:grid-cols-4 gap-8">
+        <div class="bg-light-tail-100 dark:bg-dark-navy-500 p-6 rounded-2xl"  v-for="service in services.data" :key="service.id">
           <div
             class="
               text-accent
@@ -58,7 +58,7 @@ defineProps({
             </svg>
           </div>
           <h4 class="text-xl font-medium mb-2">{{service.name}}</h4>
-          <p>
+          <p class="white font-medium ">
             {{service.desc}}
           </p>
         </div>

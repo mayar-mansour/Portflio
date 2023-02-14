@@ -42,8 +42,9 @@ defineProps({
     <Services :services="services"/>
     <!-- Contact primary -->
     <ContactMe :profiles="profiles"/>
-    <div class="p-6">
+
+    <!-- <div class="p-6 bg-transperent">
         <button @click="toggleDark()" class="px-4 py-2 text-white bg-gray-600 dark:bg-purple-700">Dark Mode</button>
-                    </div>
+                    </div> -->
   </FrontendLayout>
 </template>

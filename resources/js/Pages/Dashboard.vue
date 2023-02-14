@@ -9,7 +9,6 @@ const toggleDark = useToggle(isDark);
 
 <template>
     <Head title="Dashboard" />
-
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>
@@ -23,9 +22,6 @@ const toggleDark = useToggle(isDark);
                 </div>
             </div>
         </div>
-          <div class="p-6 bg-white border-b border-gray-200">
 
-                        <button @click="toggleDark()" class="px-4 py-2 text-white bg-gray-600 dark:bg-purple-700">Dark Toggle</button>
-                    </div>
     </AuthenticatedLayout>
 </template>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\SkillResource;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -20,7 +21,7 @@ class SkillController extends Controller
     public function index()
 
     {
-         $auth=Auth::guard('web')->id();
+        $auth=Auth::guard('web')->id();
         $skills= SkillResource::collection(Skill::all()->where('profile_id',$auth));
         return Inertia::render('Skills/index',compact('skills'));
     }

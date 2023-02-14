@@ -6,7 +6,11 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
+import { useDark, useToggle } from "@vueuse/core";
 
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -26,8 +30,10 @@ const showingNavigationDropdown = ref(false);
                                 <Link :href="route('dashboard')">
                                     <ApplicationLogo
                                         class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"
+
                                     />
                                 </Link>
+
                             </div>
 
                             <!-- Navigation Links -->
@@ -50,12 +56,15 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('welcome')" :active="route().current('welcome')">
                                     Home Screen
                                 </NavLink>
+
+
                             </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                            <div class="ml-3 relative flex">
+
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
@@ -78,7 +87,9 @@ const showingNavigationDropdown = ref(false);
                                                     />
                                                 </svg>
                                             </button>
+
                                         </span>
+
                                     </template>
 
                                     <template #content>
@@ -88,6 +99,10 @@ const showingNavigationDropdown = ref(false);
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
+                                  <svg @click="toggleDark()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="IconChangeColor" height="35" width="48">
+        <path d="M9.5,2c-1.82,0-3.53,0.5-5,1.35c2.99,1.73,5,4.95,5,8.65s-2.01,6.92-5,8.65C5.97,21.5,7.68,22,9.5,22c5.52,0,10-4.48,10-10 S15.02,2,9.5,2z"
+         id="mainIconPathAttribute" fill="#000000" stroke-width="0.6" stroke="#002aff" filter="url(#shadow)"></path><filter id="shadow"><feDropShadow id="shadowValue"
+          stdDeviation="0.5" dx="1.1" dy="1.2" flood-color="black"></feDropShadow></filter></svg>
                             </div>
                         </div>
 
