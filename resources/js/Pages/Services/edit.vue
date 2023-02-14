@@ -15,44 +15,43 @@
           class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
         >
           <div class="p-6 text-gray-900 dark:text-gray-100">
-          <div class="max-w-md mx-auto sm:px-6 lg-px-8 ">
-            <form class="p-4" @submit.prevent="submit">
-              <div>
-                <InputLabel for="name" value="Name" />
+            <div class="max-w-md mx-auto sm:px-6 lg-px-8">
+              <form class="p-4" @submit.prevent="submit">
+                <div>
+                  <InputLabel for="name" value="Service Title" />
 
-                <TextInput
-                  id="name"
-                  type="text"
-                  class="mt-1 block w-full"
-                  v-model="form.name"
-                />
+                  <TextInput
+                    id="name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.name"
+                  />
 
-                <InputError class="mt-2" :message="form.errors.name" />
-              </div>
-              <div class="mt-2 ">
-                <InputLabel for="desc" value="Decsription" />
+                  <InputError class="mt-2" :message="form.errors.name" />
+                </div>
+                <div>
+                  <InputLabel for="desc" value="Service Description" />
 
-                <TextInput
-                  id="desc"
-                  type="file"
-                  class="mt-1 block w-full "
-                 v-model="form.desc"
-/>
-              </div>
+                  <TextInput
+                    id="desc"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.desc"
+                  />
 
+                  <InputError class="mt-2" :message="form.errors.desc" />
+                </div>
 
-              <div class="flex items-center justify-end mt-4">
-
-
-                <PrimaryButton
-                  class="ml-4 bg-indigo-500"
-                  :class="{ 'opacity-25': form.processing }"
-                  :disabled="form.processing"
-                >
-                Update
-                </PrimaryButton>
-              </div>
-            </form>
+                <div class="flex items-center justify-end mt-4">
+                  <PrimaryButton
+                    class="ml-4 bg-indigo-500"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                  >
+                    Update
+                  </PrimaryButton>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -72,18 +71,18 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import { Inertia } from "@inertiajs/inertia";
 const props = defineProps({
   service: Object,
-});
+})
 
 const form = useForm({
   name: props.service?.name,
-  desc: null,
-});
+  desc: props.service?.desc,
+})
 
 const submit = () => {
   Inertia.post(`/services/${props.service.id}`, {
-    _method: "put",
+    _method: 'put',
     name: form.name,
     desc: form.desc,
-  });
-};
+  })
+}
 </script>

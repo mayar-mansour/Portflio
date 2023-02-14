@@ -94,6 +94,7 @@ defineProps({
                   mr-3
                   sm:mr-4
                 "
+                target="_blank"
                 :href="profile.youtube_link"
               >
                 <svg
@@ -108,6 +109,7 @@ defineProps({
                 </svg>
               </a>
               <a
+              target="_blank"
                 class="
                   w-12
                   h-12

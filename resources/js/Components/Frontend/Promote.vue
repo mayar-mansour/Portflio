@@ -28,6 +28,7 @@ defineProps({
           sm:text-3xl
         "
       >
+
         <span class="block pb-2">Ready to dive in?</span>
         <span class="block text-dark-primary dark:text-white"
           >{{profile.course_name}}</span
@@ -35,8 +36,8 @@ defineProps({
       </h4>
       <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
         <div class="inline-flex rounded-md shadow">
-          <a
-            :href="profile.youtube_link"
+          <a target="_blank"
+            :href="profile.udemy_link"
             class="
               inline-flex
               items-center

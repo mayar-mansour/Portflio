@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import { Head, Link, useForm } from '@inertiajs/vue3';
+defineProps({
+  profiles: Object,
 
+});
 const showMessage = ref(false);
 
 const form = useForm({
@@ -28,7 +31,7 @@ const submit = () => {
 };
 </script>
 <template>
-  <section id="contact" class="section bg-light-primary dark:bg-dark-primary">
+  <section id="contact" class="section bg-light-primary dark:bg-dark-primary"  v-for="profile in profiles.data" :key="profile.id">
     <div
       class="container mx-auto"
       v-motion
@@ -44,8 +47,7 @@ const submit = () => {
       <div class="flex flex-col items-center text-center">
         <h2 class="section-title">Contact Me</h2>
         <p class="subtitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga veniam
-          labore nisium illum cupiditate reiciendis a numquam
+
         </p>
       </div>
       <div class="flex flex-col lg:flex-row lg:gap-x-8">
@@ -92,7 +94,7 @@ const submit = () => {
             <div>
               <h4 class="font-body text-xl mb-1">Have a question?</h4>
               <P class="mb-1 text-paragraph">I am here to help you.</P>
-              <p class="text-accent font-normal">Email me at mayarsoliman31@gmail.com</p>
+              <p class="text-accent font-normal">Email me at {{profile.contact_mail}}</p>
             </div>
           </div>
           <div class="flex flex-col lg:flex-row gap-x-4">
@@ -133,7 +135,7 @@ const submit = () => {
             </div>
             <div>
               <h4 class="font-body text-xl mb-1">Current Location</h4>
-              <P class="mb-1 text-paragraph">Alexandris, Egypt.</P>
+              <P class="mb-1 text-paragraph">{{profile.company_name}}</P>
               <p class="text-accent font-normal">Serving clients worldwide.</p>
             </div>
           </div>

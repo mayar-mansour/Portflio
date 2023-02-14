@@ -70,6 +70,7 @@ class SkillController extends Controller
      */
     public function edit(Skill $skill)
     {
+        //dd($skill);
         return Inertia::render('Skills/edit',compact('skill'));
     }
 

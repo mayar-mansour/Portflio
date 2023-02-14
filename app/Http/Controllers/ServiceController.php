@@ -63,8 +63,10 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($service)
+    public function edit(Service $service)
+
     {
+        //dd($service);
         return Inertia::render('Services/edit',compact('service'));
     }
 

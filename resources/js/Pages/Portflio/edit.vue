@@ -184,6 +184,7 @@
                 <TextInput
                   id="contact_phone"
                   type="text"
+                  value="contact_phone"
                   class="mt-1 block w-full "
                   v-model="form.contact_phone"
                 />
@@ -222,7 +223,7 @@ const props = defineProps({
 });
 
 const form = useForm({
-  name: props.profile?.name,
+  name: props.request?.name,
     company_name: props.profile?.company_name,
     job_title: props.profile?.job_title,
     job_title_desc:props.profile?.job_title_desc,
