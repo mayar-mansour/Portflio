@@ -15,7 +15,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('portflios', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->default(Auth::guard('web')->id());
             $table->string('name')->nullable();
@@ -43,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('portflios');
     }
 };

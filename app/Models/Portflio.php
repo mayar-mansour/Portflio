@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Profile extends Model
+class Portflio extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'logo','company_name','job_title','job_title_desc','youtube_link','course_name','linkedin_link','udemy_link','about_desc','about_title','contact_country','contact_mail','contact_phone'];
@@ -31,8 +31,8 @@ class Profile extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function profile()
+    public function portflio()
     {
-        return $this->belongsTo(Profile::class);
+        return $this->belongsTo(Portflio::class);
     }
 }

@@ -1,11 +1,11 @@
 <template>
-  <Head title="New Skill" />
+  <Head title="New Portflio" />
   <AuthenticatedLayout>
     <template #header>
       <h2
         class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
       >
-        New Porject
+        New Portflio
       </h2>
     </template>
 
@@ -42,7 +42,7 @@
                 <InputError class="mt-2" :message="form.errors.company_name" />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="logo" value="logo" />
+                <InputLabel for="logo" value="Profile Image" />
 
                 <TextInput
                   id="logo"
@@ -55,7 +55,7 @@
                 <InputError class="mt-2" :message="form.errors.logo" />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="job_title" value="job_title" />
+                <InputLabel for="job_title" value="Job Title" />
 
                 <TextInput
                   id="job_title"
@@ -68,7 +68,7 @@
                 <InputError class="mt-2" :message="form.errors.job_title" />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="job_title_desc" value="job_title_desc" />
+                <InputLabel for="job_title_desc" value="Job Title Description" />
 
                 <TextInput
                   id="job_title_desc"
@@ -81,7 +81,7 @@
                 <InputError class="mt-2" :message="form.errors.job_title_desc" />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="youtube_link" value="Youtube Channel Link" />
+                <InputLabel for="youtube_link" value="Youtube Channel Link if Exisit" />
 
                 <TextInput
                   id="youtube_link"
@@ -110,13 +110,13 @@
                 />
               </div>
               <div>
-                <InputLabel for="udemy_link" value=" Udemy Course Link" />
+                <InputLabel for="course_name" value=" Udemy Course Link" />
 
                 <TextInput
-                  id="udemy_link"
+                  id="course_name"
                   type="text"
                   class="mt-1 block w-full"
-                  v-model="form.udemy_link"
+                  v-model="form.course_name"
                 />
               </div>
               <div>
@@ -179,16 +179,16 @@
                 <InputError class="mt-2" :message="form.errors.contact_mail" />
               </div>
               <div class="mt-2 ">
-                <InputLabel for="contact_mail" value="Your phone" />
+                <InputLabel for="contact_phone" value="Your phone" />
 
                 <TextInput
-                  id="contact_mail"
+                  id="contact_phone"
                   type="text"
                   class="mt-1 block w-full "
-                  v-model="form.contact_mail"
+                  v-model="form.contact_phone"
                 />
 
-                <InputError class="mt-2" :message="form.errors.contact_mail" />
+                <InputError class="mt-2" :message="form.errors.contact_phone" />
               </div>
   <div class="flex items-center justify-end mt-4">
                 <PrimaryButton
@@ -235,6 +235,7 @@ const form = useForm({
     contact_company: "",
     contact_mail: "",
     contact_phone: "",
+    contact_country: "",
     logo:null,
 });
 

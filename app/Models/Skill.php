@@ -24,8 +24,8 @@ public function save(array $options = array())
     {
         return $this->hasMany(Project::class);
     }
-    public function profiles()
+    public function portflio()
     {
-        return $this->hasMany(Profile::class);
+        return $this->hasMany(Portflio::class);
     }
 }

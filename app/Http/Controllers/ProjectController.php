@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProjectResource;
+use App\Http\Resources\SkillResource;
 use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Http\Request;
@@ -34,7 +35,8 @@ class ProjectController extends Controller
     public function create()
 
     {
-        $skills= Skill::all();
+        $auth=Auth::guard('web')->id();
+        $skills= Skill::all()->where('profile_id',$auth);
         return Inertia::render('Projects/create',compact('skills'));
     }
 
@@ -74,7 +76,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $skills = Skill::all();
+        $auth=Auth::guard('web')->id();
+        $skills=  Skill::all()->where('profile_id',$auth);
         return Inertia::render('Projects/edit', compact('project', 'skills'));
     }
 

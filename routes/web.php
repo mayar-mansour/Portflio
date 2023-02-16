@@ -36,6 +36,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/projects', ProjectController::class);
     Route::resource('/services', ServiceController::class);
     Route::resource('/portflio', PortflioController::class);
+    // Route::get('/portflio/{id}', [PortflioController::class, 'edit'])->name('portflio.edit');
+    // Route::patch('/portflio', [PortflioController::class, 'update'])->name('portflio.update');
+    // Route::delete('/portflio', [PortflioController::class, 'destroy'])->name('portflio.destroy');
 
 });
 

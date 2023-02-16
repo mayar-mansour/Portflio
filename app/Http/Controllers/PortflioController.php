@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PortflioResource;
 use App\Http\Resources\ProjectResource;
-use App\Models\Profile;
-use App\Models\Project;
-use App\Models\Skill;
+use App\Models\Portflio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use PhpParser\Node\Expr\AssignOp\Pow;
 
 class PortflioController extends Controller
 {
@@ -20,10 +19,11 @@ class PortflioController extends Controller
     {
         $auth=Auth::guard('web')->id();
 
-        $profiles= PortflioResource::collection(Profile::all()->where('user_id',$auth));
-        //dd($profiles);
+        $profiles= PortflioResource::collection(Portflio::all()->where('user_id',$auth));
+        $prof= PortflioResource::collection(Portflio::all()->where('user_id',$auth))->first();
+        // dd($prof);
 
-        return Inertia::render('Portflio/index',compact('profiles'));
+        return Inertia::render('Portflio/index',compact('profiles','prof'));
     }
     /**
      * Show the form for creating a new resource.
@@ -46,9 +46,10 @@ class PortflioController extends Controller
      */
     public function store(Request $request)
     {
+
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo')->store('profiles');
-            Profile::create([
+            Portflio::create([
                 'user_id' => Auth::guard('web')->id(),
                 'name' => $request->name,
                 'logo' => $logo,
@@ -66,17 +67,20 @@ class PortflioController extends Controller
                 'contact_phone' => $request->contact_phone,
             ]);
 
-            return Redirect::route('portflio.index')->with('message', 'Skill created successfully.');
+            return Redirect::route('portflio.index')->with('message', 'Portflio created successfully.');
         }
     }
-   /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit($id)
     {
+        // dd($profile);
+        $profile = Portflio::where('id',$id)->first();
+        // dd($profile);
         return Inertia::render('Portflio/edit',compact('profile'));
     }
 
@@ -87,15 +91,25 @@ class PortflioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request)
     {
+        // $request->validate([
+        //     'name'=>['required','min:3'],
+        //     'logo'=>['required'],
+        //     'country'=>['required'],
+        //     'contact_phone'=>['required'],
+        //     'contact_mail'=>['required'],
+        // ]);
+        $profile = Portflio::where('id',$request->id)->first();
+
         $image = $profile->logo;
+        //  dd($image);
         $request->validate([
             'name' => ['required', 'min:3'],
             'logo' => ['required']
         ]);
         if ($request->hasFile('logo')) {
-            Storage::delete($profile->image);
+            Storage::delete($image);
             $image = $request->file('logo')->store('profiles');
         }
 
@@ -116,13 +130,21 @@ class PortflioController extends Controller
                 'contact_mail' => $request->contact_mail,
                 'contact_phone' => $request->contact_phone,
         ]);
-        return Redirect::route('profiles.index')->with('message', 'Project updated successfully.');
-    }
 
-    public function destroy(Profile $profile)
+        return Redirect::route('portflio.index')->with('message', 'Project updated successfully.');
+    }
+ /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
+        $profile = Portflio::where('id',$id)->first();
         Storage::delete($profile->logo);
         $profile->delete();
         return Redirect::back()->with('message', 'profile deleted successfully.');
     }
+
 }

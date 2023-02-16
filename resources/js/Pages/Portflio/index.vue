@@ -15,7 +15,7 @@
                     class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
                 >
                     <div class="p-6 text-gray-900 dark:text-gray-100"  >
-                        <div class="flex justify-end m-2 p-2">
+                        <div v-if="!prof" class="flex justify-end m-2 p-2">
                             <Link
                                 :href="route('portflio.create')"
                                 class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded-md"
@@ -23,7 +23,7 @@
                                 New portflio Profile
                             </Link>
                         </div>
-   <div class="overflow-x-auto relative">
+   <div class="overflow-x-auto relative" v-else>
         <table
             class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
           >
@@ -96,5 +96,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head,Link } from '@inertiajs/vue3';
 defineProps({
   profiles: Array,
+  prof: Array,
 });
+
 </script>

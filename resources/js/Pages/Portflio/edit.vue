@@ -18,6 +18,16 @@
             <form class="p-4 row flex " @submit.prevent="submit">
           <div class="col max-w-md mx-auto sm:px-6 lg-px-8 ">
               <div>
+
+
+                <TextInput
+                  id="id"
+                  type="hidden"
+                  class="mt-1 block w-full"
+                  v-model="form.name"
+                />
+              </div>
+              <div>
                 <InputLabel for="name" value="Name" />
 
                 <TextInput
@@ -184,7 +194,6 @@
                 <TextInput
                   id="contact_phone"
                   type="text"
-                  value="contact_phone"
                   class="mt-1 block w-full "
                   v-model="form.contact_phone"
                 />
@@ -223,7 +232,8 @@ const props = defineProps({
 });
 
 const form = useForm({
-  name: props.request?.name,
+    id: props.profile?.id,
+    name: props.profile?.name,
     company_name: props.profile?.company_name,
     job_title: props.profile?.job_title,
     job_title_desc:props.profile?.job_title_desc,
@@ -236,13 +246,19 @@ const form = useForm({
     contact_company:props.profile?.contact_company,
     contact_mail:props.profile?.contact_mail,
     contact_phone:props.profile?.contact_phone,
-    logo:null,
+    logo:props.profile?.logo,
 
 });
+function cleanForm() {
+  form.reset();
+  setShowMessage(true);
+  setTimeout(() => setShowMessage(false), 2000);
+}
 
 const submit = () => {
   Inertia.post(`/portflio/${props.profile.id}`, {
     _method: "put",
+    id: form.id,
     name: form.name,
     job_title: form.job_title,
     job_title_desc: form.job_title_desc,
@@ -256,6 +272,8 @@ const submit = () => {
     contact_mail: form.contact_mail,
     contact_phone: form.contact_phone,
     logo: form.logo,
+    onSuccess: () => cleanForm(),
   });
+
 };
 </script>

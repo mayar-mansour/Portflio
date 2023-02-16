@@ -27,7 +27,7 @@
                     v-model="form.name"
                   />
 
-                  <InputError class="mt-2" :message="form.errors.name" />
+                 <InputError class="mt-2" :message="form.errors.name" />
                 </div>
                 <div>
                   <InputLabel for="desc" value="Service Description" />
