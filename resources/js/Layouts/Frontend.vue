@@ -15,7 +15,7 @@ defineProps({
 <template>
 <div class="bg-slate-200 dark:bg-slate-900">
     <!-- Header -->
-    <Header  :profiles="profiles" :name="name"/>
+    <Header :profiles="profiles" :name="name"/>
     <main class="min-h-screen">
     <slot />
     </main>

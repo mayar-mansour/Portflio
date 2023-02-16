@@ -21,6 +21,7 @@ defineProps({
   profiles: Object,
   prof: Object,
   services: Object,
+  name: Object,
   auth: Object,
 });
 </script>
@@ -28,7 +29,7 @@ defineProps({
 <template>
     <Head title="Welcome to Portflio" />
 
- <FrontendLayout>
+ <FrontendLayout :profiles="profiles" :name="name">
     <!-- Hero primary -->
     <Hero :profiles="profiles" :auth="auth"/>
     <!-- Promote tail-100 -->
