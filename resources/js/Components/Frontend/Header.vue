@@ -37,7 +37,7 @@ onMounted(() => {
       class="container flex flex-wrap justify-between items-center mx-auto"
       bis_skin_checked="1"
     >
-      <a href="" class="flex items-center">
+      <a class="flex items-center">
         <span
           class="
             self-center
@@ -47,7 +47,7 @@ onMounted(() => {
             text-black
             dark:text-white
           "
-          ></span
+          >Portflio</span
         >
       </a>
       <button
