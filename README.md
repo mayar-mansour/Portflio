@@ -17,3 +17,7 @@ Requirement :
 Kindly insert all data to the best view 
 
 php artisan migrate 
+
+npm install vue
+
+npm install @inertiajs/inertia @inertiajs/inertia-vue
