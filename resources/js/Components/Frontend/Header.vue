@@ -47,7 +47,7 @@ onMounted(() => {
             text-black
             dark:text-white
           "
-          >Mayar Mansour</span
+          ></span
         >
       </a>
       <button

@@ -135,7 +135,7 @@ const submit = () => {
             </div>
             <div>
               <h4 class="font-body text-xl mb-1">Current Location</h4>
-              <P class="mb-1 text-paragraph">{{profile.company_name}}</P>
+              <P class="mb-1 text-paragraph">{{profile.contact_country}}</P>
               <p class="text-accent font-normal">Serving clients worldwide.</p>
             </div>
           </div>

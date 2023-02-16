@@ -37,7 +37,7 @@ defineProps({
      v-for="profile in profiles.data" :key="profile.id">
 
         <div class="flex-1 flex flex-col items-center lg:items-start">
-          <p class="text-lg text-accent text-md mb-[22px]">Hey, I'm Eng.{{ profile.name }}! 👋</p>
+          <p class="text-lg text-accent text-md mb-[22px]">Hey, I'm Eng.<span class="font-bold text-2xl">{{ profile.name }}</span>! 👋</p>
           <h4
             class="
               text-4xl
