@@ -19,6 +19,7 @@ defineProps({
   skills: Object,
   projects: Object,
   profiles: Object,
+  prof: Object,
   services: Object,
   auth: Object,
 });
@@ -31,7 +32,7 @@ defineProps({
     <!-- Hero primary -->
     <Hero :profiles="profiles" :auth="auth"/>
     <!-- Promote tail-100 -->
-    <Promote :profiles="profiles"/>
+    <Promote :profiles="profiles" :prof="prof"/>
     <!-- About secondary -->
     <About :profiles="profiles"/>
     <!-- Skills tail-100 -->

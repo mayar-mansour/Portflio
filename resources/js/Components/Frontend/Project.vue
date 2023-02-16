@@ -5,7 +5,8 @@ defineProps({
 });
 </script>
 <template>
-  <Link
+  <a
+   target="_blank"
     :href="project.project_url"
     class="group flex flex-col items-center text-center cursor-pointer"
     v-motion
@@ -17,7 +18,7 @@ defineProps({
       opacity: 1,
       y: 0,
     }"
-  >
+  ></a>
     <div class="mb-6">
       <img class="rounded-2xl h-56" :src="project.image" :alt="project.name" />
     </div>
@@ -41,5 +42,5 @@ defineProps({
     >
       {{ project.name }}
     </h3>
-  </Link>
+  </a>
 </template>

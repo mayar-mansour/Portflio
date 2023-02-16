@@ -24,12 +24,8 @@ class WelcomeController extends Controller
         $profiles= PortflioResource::collection(Portflio::all());
         $profiles= PortflioResource::collection(Portflio::all()->where('user_id',$auth));
         $services= ServiceResource::collection(Service::all()->where('profile_id',$auth));
-        // $test=$profiles[0]->name;
+        $prof= PortflioResource::collection(Portflio::all()->where('user_id',$auth))->first();
 
-        // dd(Auth::guard('web')->id());
-
-
-
-        return Inertia::render('Welcome', compact('skills', 'projects','profiles','auth','services'));
+        return Inertia::render('Welcome', compact('skills', 'projects','profiles','auth','services','prof'));
     }
 }

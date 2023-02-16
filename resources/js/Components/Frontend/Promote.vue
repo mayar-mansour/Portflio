@@ -1,12 +1,13 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 defineProps({
-  profiles: Object,
+  profiles: Array,
+  prof: Object,
   test: Object,
 });
 </script>
 <template>
-  <div class="bg-light-tail-100 dark:bg-dark-navy-500">
+  <div class="bg-light-tail-100 dark:bg-dark-primary" >
     <div
       class="
         container
@@ -29,6 +30,7 @@ defineProps({
         "
       >
 
+        <p class=" pb-2">Want to get My course</p>
         <span class="block pb-2">Ready to dive in?</span>
         <span class="block text-dark-primary dark:text-white"
           >{{profile.course_name}}</span

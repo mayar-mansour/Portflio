@@ -62,7 +62,7 @@ defineProps({
           >
            {{ profile.job_title_desc }}
           </p>
-          <div class="pt-12">
+          <div class="pt-12" v-if="profile.youtube_link != null  && profile.youtube_link != null ">
             <h5
               class="
                 text-lg
@@ -78,7 +78,7 @@ defineProps({
               Follow me on
             </h5>
             <div class="flex items-center mb-6">
-              <a
+              <a v-if="profile.youtube_link != null"
                 class="
                   w-12
                   h-12
@@ -108,7 +108,7 @@ defineProps({
                   />
                 </svg>
               </a>
-              <a
+              <a v-if="profile.linkedin_link != null"
               target="_blank"
                 class="
                   w-12

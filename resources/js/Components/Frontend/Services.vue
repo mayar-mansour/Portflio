@@ -5,7 +5,7 @@ defineProps({
 });
 </script>
 <template>
-  <section
+  <section v-if="services"
     id="services"
     class="section bg-light-secondary dark:bg-dark-secondary"
   >
