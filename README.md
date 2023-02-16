@@ -11,6 +11,8 @@ Features:
 
 -user can only create one portfolio, but he can delete or edit
 
+-user can use his home screen and his dashborad in both Night and Drak Mode
+
 Details : Portfolio 9, PHP 8, inertia.js, vue.js 
 
 Requirement :
