@@ -49,7 +49,7 @@ defineProps({
           </h2>
 <span>{{profile.contact_mail}}</span>
  <br>
- <span>{{profile.contact_mail}}</span>
+ <span>{{profile.contact_phone}}</span>
         </div>
       </div>
     </div>

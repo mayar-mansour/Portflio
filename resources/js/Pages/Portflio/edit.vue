@@ -40,7 +40,7 @@
                 <InputError class="mt-2" :message="form.errors.name" />
               </div>
               <div>
-                <InputLabel for="company_name" value="company_name" />
+                <InputLabel for="company_name" value="company Name" />
 
                 <TextInput
                   id="company_name"
@@ -246,6 +246,7 @@ const form = useForm({
     contact_company:props.profile?.contact_company,
     contact_mail:props.profile?.contact_mail,
     contact_phone:props.profile?.contact_phone,
+    contact_country:props.profile?.contact_country,
     logo:props.profile?.logo,
 
 });
@@ -262,6 +263,7 @@ const submit = () => {
     name: form.name,
     job_title: form.job_title,
     job_title_desc: form.job_title_desc,
+    company_name: form.company_name,
     youtube_link: form.youtube_link,
     course_name: form.course_name,
     udemy_link: form.udemy_link,
@@ -270,6 +272,7 @@ const submit = () => {
     about_desc: form.about_desc,
     contact_company: form.contact_company,
     contact_mail: form.contact_mail,
+    contact_country: form.contact_country,
     contact_phone: form.contact_phone,
     logo: form.logo,
     onSuccess: () => cleanForm(),

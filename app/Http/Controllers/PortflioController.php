@@ -80,7 +80,7 @@ class PortflioController extends Controller
     {
         // dd($profile);
         $profile = Portflio::where('id',$id)->first();
-        // dd($profile);
+        //dd($profile);
         return Inertia::render('Portflio/edit',compact('profile'));
     }
 
