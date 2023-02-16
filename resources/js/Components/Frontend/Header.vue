@@ -4,7 +4,11 @@ const showMobileMenu = ref("false");
 const scrollBg = ref(false);
 import { useDark, useToggle } from "@vueuse/core";
 
-
+import { Head, Link } from '@inertiajs/vue3';
+defineProps({
+  name: Object,
+  prof: Object,
+});
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 const navigations = [
@@ -47,7 +51,7 @@ onMounted(() => {
             text-black
             dark:text-white
           "
-          >Portflio</span
+          >{{$name}}</span
         >
       </a>
       <button
