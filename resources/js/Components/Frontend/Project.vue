@@ -18,7 +18,7 @@ defineProps({
       opacity: 1,
       y: 0,
     }"
-  ></a>
+  >
     <div class="mb-6">
       <img class="rounded-2xl h-56" :src="project.image" :alt="project.name" />
     </div>
