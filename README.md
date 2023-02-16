@@ -15,4 +15,5 @@ Details : Portfolio 9, PHP 8, inertia.js, vue.js
 
 Requirement :
 Kindly insert all data to the best view 
+
 php artisan migrate 
